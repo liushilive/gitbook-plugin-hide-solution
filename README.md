@@ -9,6 +9,7 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 
 ## Changelog
 
+* **0.2.1:** Updated README to reflect the new syntax.
 * **0.2.0:** Huge update! Changed syntax for defining section so that you can add blocks (GitBook plugin) within section.
 * **0.1.1:** Improved looks of dark theme.
 * **0.1.0:** Fixed color scheme when changed into dark mode.
@@ -20,7 +21,11 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 You can define a new section with the use of tag:
 
 ```
-{%section title="This is the first section", id="section0", show=true %}
+<!--sec title="This is the first section", id="section0", show=true ces-->
+
+Insert markdown content here.
+
+<!--endsec-->
 ```
 
 A section will take two arguments, listed as follows:
