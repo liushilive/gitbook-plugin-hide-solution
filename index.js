@@ -1,5 +1,4 @@
 var jade = require('jade');
-var marked = require('marked');
 
 module.exports = {
 
@@ -14,4 +13,15 @@ module.exports = {
 			"sectionx.css"
 		]
 	},
+
+	hooks: {
+
+		"page": function(page){
+			page.sections[0].content = page.sections[0].content
+										.replace(/\<!--sec /g, '<sec ')
+										.replace(/\ ces-->/g, '>')
+										.replace(/\<!--endsec-->/g, '</sec>')
+			return page;
+		}
+	}
 };

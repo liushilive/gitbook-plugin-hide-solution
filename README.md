@@ -9,6 +9,7 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 
 ## Changelog
 
+* **0.2.0:** Huge update! Changed syntax for defining section so that you can add blocks (GitBook plugin) within section.
 * **0.1.1:** Improved looks of dark theme.
 * **0.1.0:** Fixed color scheme when changed into dark mode.
 
