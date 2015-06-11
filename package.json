@@ -2,7 +2,7 @@
     "name": "gitbook-plugin-sectionx",
     "description": "A GitBook plugin created for you to separate the page into sections, and add buttons to allow readers to control the visibility of each section.",
     "main": "index.js",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "engines": {
         "gitbook": "*"
     },

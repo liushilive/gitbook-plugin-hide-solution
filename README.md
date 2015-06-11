@@ -9,13 +9,19 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 
 ## Changelog
 
-* **0.3.2:** Fixed issues with <h2> title.
-* **0.3.1:** Fixed typos in README.
-* **0.3.0:** Fixed rendering issue in .pdf or other formats.
-* **0.2.1:** Updated README to reflect the new syntax.
-* **0.2.0:** Huge update! Changed syntax for defining section so that you can add blocks (GitBook plugin) within section.
-* **0.1.1:** Improved looks of dark theme.
-* **0.1.0:** Fixed color scheme when changed into dark mode.
+* 0.3 Releases:
+	* **0.3.3:** Fixed panel toggle button.
+	* **0.3.2:** Fixed issues with <h2> title.
+	* **0.3.1:** Fixed typos in README.
+	* **0.3.0:** Fixed rendering issue in .pdf or other formats.
+
+* 0.2 Releases:
+	* **0.2.1:** Updated README to reflect the new syntax.
+	* **0.2.0:** Huge update! Changed syntax for defining section so that you can add blocks (GitBook plugin) within section.
+
+* 0.1 Releases:
+	* **0.1.1:** Improved looks of dark theme.
+	* **0.1.0:** Fixed color scheme when changed into dark mode.
 
 ## How to use section?
 

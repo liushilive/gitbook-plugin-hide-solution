@@ -29,6 +29,8 @@
 
 		$('sec').each(function(){
 
+			$(this).find('delete').remove();
+
 			var html = $(this).html();
 			var content = ''
 				+ '<div class="panel panel-default">'
@@ -43,15 +45,13 @@
 				+ '</div>';
 
 			$(this).html(content);
-
-			$(this).find('delete').remove();
 			$(this).find('title_here').html('<h2>' + $(this).data('title') + '</h2>');
 			$(this).find('.panel-collapse.collapse').attr("id", $(this).data('id'));
 
 			if($(this).data('show'))
 			{
 				$(this).find('.panel-collapse.collapse').addClass('in');
-				$(this).find('.panel-heading').children('h2').append('<a class="pull-right section atTitle" target="' + $(this).data('id') + '"><span class="fa fa-times" /></a>');
+				$(this).find('.panel-heading').children('title_here').children('h2').append('<a class="pull-right section atTitle" target="' + $(this).data('id') + '"><span class="fa fa-times" /></a>');
 			}
 
 		});
