@@ -9,6 +9,7 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 
 ## Changelog
 
+* **0.3.2:** Fixed issues with <h2> title.
 * **0.3.1:** Fixed typos in README.
 * **0.3.0:** Fixed rendering issue in .pdf or other formats.
 * **0.2.1:** Updated README to reflect the new syntax.
@@ -23,9 +24,9 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 You can define a new section with the use of tag:
 
 ```
-<!--sec title="This is the first section", id="section0", show=true ces-->
+<!--sec title="This is the first section" id="section0" show=true ces-->
 
-Insert markdown content here.
+Insert markdown content here (you should start with h3 if you use heading).
 
 <!--endsec-->
 ```
