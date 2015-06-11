@@ -43,6 +43,8 @@
 				+ '</div>';
 
 			$(this).html(content);
+
+			$(this).find('.panel-body').children(":first").remove();
 			$(this).find('h2').text($(this).data('title'));
 			$(this).find('.panel-collapse.collapse').attr("id", $(this).data('id'));
 
@@ -98,4 +100,3 @@
 	});
 
 })();
-

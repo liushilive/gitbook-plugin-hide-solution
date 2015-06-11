@@ -1,4 +1,5 @@
 var jade = require('jade');
+var cheerio = require('cheerio');
 
 module.exports = {
 
@@ -17,10 +18,17 @@ module.exports = {
 	hooks: {
 
 		"page": function(page){
-			page.sections[0].content = page.sections[0].content
-										.replace(/\<!--sec /g, '<sec ')
-										.replace(/\ ces-->/g, '>')
-										.replace(/\<!--endsec-->/g, '</sec>')
+			page.sections[0].content = page.sections[0].content.replace(/\<!--sec /g, '<sec ').replace(/\ ces-->/g, '>').replace(/\<!--endsec-->/g, '</sec>');
+
+			var $ = cheerio.load(page.sections[0].content);
+
+			$('sec').each(function(i, elem){
+				var html = '<h2>' + $(this).data('title') + '</h2>';
+				$(this).prepend(html);
+			});
+
+			page.sections[0].content = $.html();
+
 			return page;
 		}
 	}
