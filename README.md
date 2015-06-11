@@ -9,6 +9,7 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 
 ## Changelog
 
+* **0.3.1:** Fixed typos in README.
 * **0.3.0:** Fixed rendering issue in .pdf or other formats.
 * **0.2.1:** Updated README to reflect the new syntax.
 * **0.2.0:** Huge update! Changed syntax for defining section so that you can add blocks (GitBook plugin) within section.
@@ -29,7 +30,7 @@ Insert markdown content here.
 <!--endsec-->
 ```
 
-A section will take two arguments, listed as follows:
+A section will take three arguments, listed as follows:
 
 * **title:** the title of the section, it will appear as the title of the bootstrap panel (with size of h2).
 * **id:** the id of the section, it is useful for button control (discussed in next section).
