@@ -23,7 +23,7 @@ module.exports = {
 			var $ = cheerio.load(page.sections[0].content);
 
 			$('sec').each(function(i, elem){
-				var html = '<h2>' + $(this).data('title') + '</h2>';
+				var html = '<delete><h2>' + $(this).data('title') + '</h2></delete>';
 				$(this).prepend(html);
 			});
 

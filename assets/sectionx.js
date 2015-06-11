@@ -33,7 +33,7 @@
 			var content = ''
 				+ '<div class="panel panel-default">'
 				+ '	<div class="panel-heading">'
-				+ '		<h2></h2>'
+				+ '		<title_here></title_here>'
 				+ '	</div>'
 				+ '	<div class="panel-collapse collapse">'
 				+ ' 	<div class="panel-body">'
@@ -44,8 +44,8 @@
 
 			$(this).html(content);
 
-			$(this).find('.panel-body').children(":first").remove();
-			$(this).find('h2').text($(this).data('title'));
+			$(this).find('delete').remove();
+			$(this).find('title_here').html('<h2>' + $(this).data('title') + '</h2>');
 			$(this).find('.panel-collapse.collapse').attr("id", $(this).data('id'));
 
 			if($(this).data('show'))
