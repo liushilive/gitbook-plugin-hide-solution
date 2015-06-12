@@ -1,17 +1,19 @@
+function sectionToggle(tar){
+
+	var target = '#' + tar;
+
+	$(target).collapse("toggle");
+
+}
+
 (function(){
 
 	var clickAction = function clickAction(source, tar){
 
-		if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
-			if(source.hasClass('atTitle'))
-				ga('send', 'event', 'sectionx-title-button', 'click');
-			else
-				ga('send', 'event', 'sectionx-custom-button', 'click');
-		}
-
 		source.click(function(){
 
-			target = '#' + tar;
+			var target = '#' + tar;
+			sectionToggle(tar);
 
 			$(target).on('show.bs.collapse', function(){
 				if(source.attr('hide'))
@@ -26,9 +28,6 @@
 				else
 					source.html("<span class='fa fa-angle-down'/>");
 			});
-
-			$(target).collapse("toggle");
-
 		});
 	};
 
@@ -95,10 +94,6 @@
 					$(this).addClass('dark');
 			});
 
-
-			if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
-			  ga('send', 'event', 'dark-theme', 'click');
-			}
 		});
 
 	};

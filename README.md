@@ -11,6 +11,8 @@ Please note that this plugin is experimental. Although it is working at the mome
 
 ## Changelog
 
+* 0.4 Releases:
+	* **0.4.0:** Added a function for you to control toggling of sections in other plugins ```sectionxToggle(id of the target section to be toggled)```.
 * 0.3 Releases:
 	* **0.3.5:** Improved event naming for Google Analytics.
 	* **0.3.4:** Added support for Google Analytics. (if you have loaded ```gitbook-plugin-ga```)
