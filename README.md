@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.3 Releases:
+	* **0.3.5:** Improved event naming for Google Analytics.
 	* **0.3.4:** Added support for Google Analytics. (if you have loaded ```gitbook-plugin-ga```)
 	* **0.3.3:** Fixed panel toggle button.
 	* **0.3.2:** Fixed issues with ```<h2>``` title.

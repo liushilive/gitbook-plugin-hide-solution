@@ -3,7 +3,10 @@
 	var clickAction = function clickAction(source, tar){
 
 		if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
-			ga('send', 'event', 'button', 'click', 'section-button');
+			if(source.hasClass('atTitle'))
+				ga('send', 'event', 'sectionx-title-button', 'click');
+			else
+				ga('send', 'event', 'sectionx-custom-button', 'click');
 		}
 
 		source.click(function(){
@@ -94,7 +97,7 @@
 
 
 			if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
-			  ga('send', 'event', 'button', 'click', 'dark-theme');
+			  ga('send', 'event', 'dark-theme', 'click');
 			}
 		});
 
