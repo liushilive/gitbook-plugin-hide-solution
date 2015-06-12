@@ -2,6 +2,10 @@
 
 	var clickAction = function clickAction(source, tar){
 
+		if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
+			ga('send', 'event', 'button', 'click', 'section-button');
+		}
+
 		source.click(function(){
 
 			target = '#' + tar;
@@ -87,6 +91,11 @@
 				if($(this).hasClass('dark') === false)
 					$(this).addClass('dark');
 			});
+
+
+			if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
+			  ga('send', 'event', 'button', 'click', 'dark-theme');
+			}
 		});
 
 	};
