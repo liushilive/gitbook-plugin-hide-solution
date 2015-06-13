@@ -1,7 +1,6 @@
 function sectionToggle(tar){
 
 	var target = '#' + tar;
-
 	$(target).collapse("toggle");
 
 }
@@ -14,6 +13,14 @@ function sectionToggle(tar){
 
 			var target = '#' + tar;
 			sectionToggle(tar);
+
+			if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
+				ga('send', 'event', 'button', 'click', 'section-button');
+				if(source.hasClass('atTitle'))
+					ga('send', 'event', 'sectionx-title-button', 'click');
+				else
+					ga('send', 'event', 'sectionx-custom-button', 'click');
+	 		}
 
 			$(target).on('show.bs.collapse', function(){
 				if(source.attr('hide'))
