@@ -1,88 +1,90 @@
 function sectionToggle(tar){
 
-	var target = '#' + tar;
-	$(target).collapse("toggle");
+	var target = $('#' + tar);
+	target.collapse("toggle");
 
+	var targetParent = target.parents('sec');
+	if(!targetParent.data('show'))
+	{
+		targetParent.data('show', true);
+		targetParent.html(targetParent.find('.panel-body').html());
+		renderSection(targetParent);
+	}
 }
 
-(function(){
+var renderSection = function renderSection(target){
 
-	var clickAction = function clickAction(source, tar){
+	target.find('delete').remove();
 
-		source.click(function(){
+	var html = target.html();
+	var content = ''
+		+ '<div class="panel panel-default">'
+		+ '	<div class="panel-heading">'
+		+ '		<title_here></title_here>'
+		+ '	</div>'
+		+ '	<div class="panel-collapse collapse">'
+		+ ' 	<div class="panel-body">'
+		+ html
+		+ '		</div>'
+		+ '	</div>'
+		+ '</div>';
 
-			var target = '#' + tar;
-			sectionToggle(tar);
+	target.html(content);
+	target.find('title_here').html('<h2>' + target.data('title') + '</h2>');
+	target.find('.panel-collapse.collapse').attr("id", target.data('id'));
 
-			if (typeof ga == 'function') { //event tracking to Google Analytics if it is loaded
-				ga('send', 'event', 'button', 'click', 'section-button');
-				if(source.hasClass('atTitle'))
-					ga('send', 'event', 'sectionx-title-button', 'click');
-				else
-					ga('send', 'event', 'sectionx-custom-button', 'click');
-	 		}
+	if(target.data('show'))
+	{
+		target.find('.panel-collapse.collapse').addClass('in');
+		target.find('.panel-heading').children('title_here').children('h2').append('<a class="pull-right section atTitle" target="' + target.data('id') + '"><span class="fa fa-angle-down" /></a>');
+	}
 
-			$(target).on('show.bs.collapse', function(){
-				if(source.attr('hide'))
-					source.html("<b>"+ source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
-				else
-					source.html("<span class='fa fa-angle-up'/>");
-			});
+	target.find('.section').each(function(){
+		if($(this).attr('show'))
+			$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
+		else
+			$(this).html("<span class='fa fa-angle-down'/>");
 
-			$(target).on('hide.bs.collapse', function(){
-				if(source.attr('show'))
-					source.html("<b>"+ source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
-				else
-					source.html("<span class='fa fa-angle-down'/>");
-			});
+		if($(this).hasClass('atTitle'))
+			$(this).addClass('btn').addClass('btn-default');
+		else
+			$(this).addClass('btn').addClass('btn-primary');
+
+		clickAction($(this), $(this).attr('target'));
+	});
+};
+
+
+var clickAction = function clickAction(source, tar){
+
+	source.click(function(){
+
+		var target = '#' + tar;
+		sectionToggle(tar);
+
+		$(target).on('show.bs.collapse', function(){
+			if(source.attr('hide'))
+				source.html("<b>"+ source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
+			else
+				source.html("<span class='fa fa-angle-up'/>");
 		});
-	};
+
+		$(target).on('hide.bs.collapse', function(){
+			if(source.attr('show'))
+				source.html("<b>"+ source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
+			else
+				source.html("<span class='fa fa-angle-down'/>");
+		});
+	});
+};
+
+(function(){
 
 	var init = function init(){
 
 		$('sec').each(function(){
-
-			$(this).find('delete').remove();
-
-			var html = $(this).html();
-			var content = ''
-				+ '<div class="panel panel-default">'
-				+ '	<div class="panel-heading">'
-				+ '		<title_here></title_here>'
-				+ '	</div>'
-				+ '	<div class="panel-collapse collapse">'
-				+ ' 	<div class="panel-body">'
-				+ html
-				+ '		</div>'
-				+ '	</div>'
-				+ '</div>';
-
-			$(this).html(content);
-			$(this).find('title_here').html('<h2>' + $(this).data('title') + '</h2>');
-			$(this).find('.panel-collapse.collapse').attr("id", $(this).data('id'));
-
-			if($(this).data('show'))
-			{
-				$(this).find('.panel-collapse.collapse').addClass('in');
-				$(this).find('.panel-heading').children('title_here').children('h2').append('<a class="pull-right section atTitle" target="' + $(this).data('id') + '"><span class="fa fa-times" /></a>');
-			}
-
+			renderSection($(this));
 		});
-
-		$('.section').each(function(){
-
-			if($(this).attr('show'))
-				$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
-			else
-				$(this).html("<span class='fa fa-angle-down'/>");
-
-			if($(this).hasClass('atTitle'))
-				$(this).addClass('btn').addClass('btn-default');
-			else
-				$(this).addClass('btn').addClass('btn-primary');
-
-			clickAction($(this), $(this).attr('target'));
-		});	
 
 		if($('div.book').hasClass('color-theme-2'))
 			$('.panel').each(function(){
