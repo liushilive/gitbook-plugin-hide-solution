@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.4 Releases:
+	* **0.4.3:** Improved dark theme appearance.
 	* **0.4.2:** Improved dark theme support.
 	* **0.4.1:** A section toggle button will be displayed if the section has been toggled once.
 	* **0.4.0:** Added a function for you to control toggling of sections in other plugins ```sectionxToggle(id of the target section to be toggled)```.
