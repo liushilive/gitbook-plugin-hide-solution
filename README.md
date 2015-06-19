@@ -12,11 +12,10 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.4 Releases:
-	* **0.4.1:** Removed Google Analytics function becuase it is useless. A section toggle button will be displayed if the section has been toggled once.
+	* **0.4.2:** Improved dark theme support.
+	* **0.4.1:** A section toggle button will be displayed if the section has been toggled once.
 	* **0.4.0:** Added a function for you to control toggling of sections in other plugins ```sectionxToggle(id of the target section to be toggled)```.
 * 0.3 Releases:
-	* **0.3.5:** Improved event naming for Google Analytics.
-	* **0.3.4:** Added support for Google Analytics. (if you have loaded ```gitbook-plugin-ga```)
 	* **0.3.3:** Fixed panel toggle button.
 	* **0.3.2:** Fixed issues with ```<h2>``` title.
 	* **0.3.1:** Fixed typos in README.

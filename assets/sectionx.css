@@ -1,10 +1,4 @@
-.panel {
-	-webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.05);
-	-moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.05);
-	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.05);
-}
-
-.panel.dark {
+.book.color-theme-2 > .book-body > .body-inner > .page-wrapper > .page-inner > section > sec > .panel {
 	background: #1A1A1A;
 
 	border-style: solid;
@@ -12,11 +6,11 @@
 	border-width: 1px;
 }
 
-.panel.dark > .panel-heading {
+.book.color-theme-2 > .book-body > .body-inner > .page-wrapper > .page-inner > section > sec > .panel > .panel-heading {
 	background-color: #2D3143;
 	border-width: 0px;
 }
 
-.panel.dark > .panel-heading > h2 > a.section {
+.book.color-theme-2 > .book-body > .body-inner > .page-wrapper > .page-inner > section > sec > .panel > .panel-heading > h2 > a.section {
 	border-color: #373b4e !important;
 }

@@ -82,29 +82,10 @@ var clickAction = function clickAction(source, tar){
 
 	var init = function init(){
 
+
 		$('sec').each(function(){
 			renderSection($(this));
 		});
-
-		if($('div.book').hasClass('color-theme-2'))
-			$('.panel').each(function(){
-				$(this).addClass('dark');
-			});
-
-		$('#color-theme-preview-0, #color-theme-preview-1').click(function(){
-			$('.panel').each(function(){
-				$(this).removeClass('dark');
-			});	
-		});
-
-		$('#color-theme-preview-2').click(function(){
-			$('.panel').each(function(){
-				if($(this).hasClass('dark') === false)
-					$(this).addClass('dark');
-			});
-
-		});
-
 	};
 
 	require(["gitbook"], function(gitbook) {
