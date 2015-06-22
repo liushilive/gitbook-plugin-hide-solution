@@ -4,11 +4,12 @@ function sectionToggle(tar){
 	target.collapse("toggle");
 
 	var targetParent = target.parents('sec');
+
 	if(!targetParent.data('show'))
 	{
 		targetParent.data('show', true);
-		targetParent.html(targetParent.find('.panel-body').html());
-		renderSection(targetParent);
+		targetParent.find('.panel-heading').children('title_here').children('h2').append('<a class="pull-right section atTitle btn btn-default" target="' + targetParent.data('id') + '"><span class="fa fa-angle-down" /></a>');
+		clickAction(targetParent.find('.section.atTitle'), targetParent.find('.section.atTitle').attr('target'));
 	}
 }
 
