@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.5 Releases:
+	* **0.5.2:** Improved dark theme appearance.
 	* **0.5.1:** Quick bugfix.
 	* **0.5.0:** Performance improvement (section rendering now moved to backend).
 
