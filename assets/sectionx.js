@@ -17,17 +17,17 @@ var clickAction = function clickAction($source, tar){
 
 	$source.click(function(){
 
-		var target = '#' + tar;
+		var $target = $('#' + tar);
 		sectionToggle(tar);
 
-		$(target).on('show.bs.collapse', function(){
+		$target.on('show.bs.collapse', function(){
 			if($source.attr('hide'))
-				$source.html("<b>"+ source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
+				$source.html("<b>"+ $source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
 			else
 				$source.html("<span class='fa fa-angle-up'/>");
 		});
 
-		$(target).on('hide.bs.collapse', function(){
+		$target.on('hide.bs.collapse', function(){
 			if($source.attr('show'))
 				$source.html("<b>"+ $source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
 			else
