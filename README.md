@@ -11,6 +11,9 @@ Please note that this plugin is experimental. Although it is working at the mome
 
 ## Changelog
 
+* 0.5 Releases:
+	* **0.5.0:** Performance improvement (section rendering now moved to backend).
+
 * 0.4 Releases:
 	* **0.4.4:** Fixed section title button behaviour to allow better integration with other plugins.
 	* **0.4.3:** Improved dark theme appearance.
@@ -36,7 +39,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 You can define a new section with the use of tag:
 
 ```
-<!--sec title="This is the first section" id="section0" show=true ces-->
+<!--sec title="Introduction" id="section0" show=true ces-->
 
 Insert markdown content here (you should start with h3 if you use heading).
 
@@ -51,23 +54,28 @@ A section will take three arguments, listed as follows:
 	* **true:** the panel content is visible to user by default, the panel title will be clickable.
 	* **false:** the panel content is hidden to user by default, the panel title is not clickable and can only be viewed by adding a custom button (discussed in next section).
 
-## Using a button to control section visibility
-
-### Controling the flow with buttons
+### Using a button to control section visibility
 
 By adding inline HTML in the GitBook, the following code can add a button to allow you to view or hide other sections. Here are the explanation of each tags:
+
+```
+<button class="section" target="section1" show="Show next section" hide="Hide next section"></button>
+```
 
 * **class:** the button has to belong to the class "section".
 * **target:** when pressed, the section with the id of target will be toggled.
 * **show:** the text on the button when the target section is hidden.
 * **hide:** the text on the button when the target section is visible.
 
-Note that you can leave 'show' and 'hide' undefined, in this case, an up-arrow or down-arrow will be displayed instead.
+Note that you can leave 'show' and 'hide' undefined, in this case, an up-arrow or down-arrow will be displayed instead. The button will not be outputed if exported to .pdf or other formats.
 
-For example:
+### Integration with other plugin
+
+Such integration is used in my other plugin ```gitbook-plugin-mcqx``` (see [here](https://github.com/ymcatar/gitbook-plugin-mcqx), or check out the next page of this book). The next section will be toggled when the user answer a question correctly.
+
+If you are developing for other plugin, you can use the ```sectionToggle(id)``` function in the client side javascript, for example:
 
 ```
-<button class="section" target="section1" show="Show next section" hide="Hide next section"></button>
+if(typeof sectionToggle === "function") //check if sectionx plugin is used
+	sectionToggle(target); //target is the id of the section to be toggled.
 ```
-
-Note that the button will not be outputed if exported to .pdf or other formats.
