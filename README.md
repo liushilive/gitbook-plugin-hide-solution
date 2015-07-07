@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.5 Releases:
+	* **0.5.3:** Updated README, as I forgot to update the syntax.
 	* **0.5.2:** Improved dark theme appearance.
 	* **0.5.1:** Quick bugfix.
 	* **0.5.0:** Performance improvement (section rendering now moved to backend).
@@ -22,14 +23,17 @@ Please note that this plugin is experimental. Although it is working at the mome
 	* **0.4.2:** Improved dark theme support.
 	* **0.4.1:** A section toggle button will be displayed if the section has been toggled once.
 	* **0.4.0:** Added a function for you to control toggling of sections in other plugins ```sectionxToggle(id of the target section to be toggled)```.
+
 * 0.3 Releases:
 	* **0.3.3:** Fixed panel toggle button.
 	* **0.3.2:** Fixed issues with ```<h2>``` title.
 	* **0.3.1:** Fixed typos in README.
 	* **0.3.0:** Fixed rendering issue in .pdf or other formats.
+
 * 0.2 Releases:
 	* **0.2.1:** Updated README to reflect the new syntax.
 	* **0.2.0:** Huge update! Changed syntax for defining section so that you can add blocks (GitBook plugin) within section.
+
 * 0.1 Releases:
 	* **0.1.1:** Improved looks of dark theme.
 	* **0.1.0:** Fixed color scheme when changed into dark mode.
@@ -41,7 +45,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 You can define a new section with the use of tag:
 
 ```
-<!--sec title="Introduction" id="section0" show=true ces-->
+<!--sec data-title="Introduction" data-id="section0" data-show=true ces-->
 
 Insert markdown content here (you should start with h3 if you use heading).
 
