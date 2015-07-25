@@ -11,6 +11,9 @@ Please note that this plugin is experimental. Although it is working at the mome
 
 ## Changelog
 
+* 0.6 Releases:
+	* **0.6.0:** Added syntax checking while the book is being built. Common syntax error and invalid ID will be detected.
+
 * 0.5 Releases:
 	* **0.5.3:** Updated README, as I forgot to update the syntax.
 	* **0.5.2:** Improved dark theme appearance.
