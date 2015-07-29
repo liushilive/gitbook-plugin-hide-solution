@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.6 Releases:
+	* **0.6.2:** Simplified syntax.
 	* **0.6.1:** Added more detailed error message.
 	* **0.6.0:** Added syntax checking while the book is being built. Common syntax error and invalid ID will be detected.
 

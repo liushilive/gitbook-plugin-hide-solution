@@ -38,17 +38,12 @@ var clickAction = function clickAction($source, tar){
 
 (function(){
 
-	var init = function init(){
-
-		$('sec').each(function(){
-			$(this).find('.section').each(function(){
+	require(["gitbook"], function(gitbook) {
+		gitbook.events.bind("page.change", function(){
+			$('.section').each(function(){
 				clickAction($(this), $(this).attr('target'));
 			});
 		});
-	};
-
-	require(["gitbook"], function(gitbook) {
-		gitbook.events.bind("page.change", init);
 	});
 
 })();

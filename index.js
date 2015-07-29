@@ -19,27 +19,25 @@ module.exports = {
 		"page": function(page){
 
 			var content = page.sections[0].content,
-				match = content.match(/<!--\s*sec[\s\S]+?ces\s*-->[\s\S]+?<!--\s*endsec\s*-->/g),  // check if section is defined in page
+				match = content.match(/<!--\s*sec[\s\S]+?ces\s*-->[\s\S]+?<!--\s*endsec\s*-->/g),
 				idList = [];
 
 			if(match){
+
 				var error = [];
 
 				match.forEach(function(item, i){
 
 					var header = item.match(/<!--\s*sec[\s\S]+?ces\s*-->/)[0],
-						body = item.replace(/<!--\s*sec[\s\S]+?ces\s*-->/, '').replace(/<!--\s*endsec\s*-->/, '');
+						body = item.replace(/<!--\s*sec[\s\S]+?ces\s*-->/, '').replace(/<!--\s*endsec\s*-->/, ''),
+						id = item.match(/data-id\s*=\s*"[\w\d]+?"\s/);
 
 					if(/<!--\s*sec/.test(body)) //contain nested sections
 						error.push([header, 'Nested sections are not supported by this plugin.']);
 
-					var title = item.match(/data-title\s*=\s*"[^"]+?"\s/);
-					if(title)
-						title = title[0].match(/"[^"]+?"/)[0].replace(/"/g, '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-					else
+					if(!item.match(/data-title\s*=\s*"[^"]+?"\s/)) //contain valid title
 						error.push([header, 'A valid title is missing.']);
 
-					var id = item.match(/data-id\s*=\s*"[\w\d]+?"\s/);
 					if(id){
 						id = id[0].match(/"[^"]+?"/)[0].replace(/"/g, '');
 						if(idList.indexOf(id) >= 0)
@@ -50,25 +48,23 @@ module.exports = {
 					else
 						error.push([header, 'A valid id is missing.']);
 
-					var show;
-					if(item.match(/data-show\s*=\s*.+?\s/)){
-						if(item.match(/data-show\s*=\s*true\s/))
-							show = true;
-						else if(item.match(/data-show\s*=\s*false\s/))
-							show = false;
-						else
+					if(item.match(/data-show\s*=\s*.+?\s/))
+						if(!item.match(/data-show\s*=\s*true\s/) && !item.match(/data-show\s*=\s*false\s/))
 							error.push([header, 'Attribute "data-show" is set to invalid value.']);
-					}
 
 					content = content.replace(/\<!--\s*sec\s/g, '<sec ').replace(/\sces\s*-->/g, '>').replace(/\<!--\s*endsec\s*-->/g, '</sec>');
 				});
 
 				if(error.length > 0){
 					console.log('\n\033[93m****** [gitbook-plugin-sectionx]('+page.path+') ******\033[0m\n');
+
 					error.forEach(function(item){
 						console.log('\u001B[31m*** Error: '+item[1]+' Please fix the syntax for the following section:\033[0m');
 						console.log(item[0]+'\n');
 					});
+
+					page.sections[0].content = '<p class="alert alert-danger">TO AUTHOR: There exists some syntax error in this page, check the build log for details.</p>';
+
 				} else {
 
 					var $ = cheerio.load(content);
@@ -97,14 +93,13 @@ module.exports = {
 							if($(this).data('show'))
 							{
 								$(this).find('.panel-collapse.collapse').addClass('in');
-								$(this).find('.panel-heading').children('h2').append('<a class="pull-right section atTitle" target="' + $(this).data('id') + '"><span class="fa fa-angle-down" /></a>');
+								$(this).find('.panel-heading').children('h2').append('<a class="pull-right section atTitle" target="' + $(this).data('id') + '"></a>');
 							}
 						});
 
-						//add the toggle button
-						$('.section').each(function(){
+						$('.section').each(function(){ // add the toggle button
 							if($(this).attr('show'))
-								$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
+								$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-up pull-left'/>");
 							else
 								$(this).html("<span class='fa fa-angle-down'/>");
 
@@ -115,17 +110,14 @@ module.exports = {
 						});
 					}
 					else
-					{
 						$('sec').each(function(i, elem){
 							var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 							$(this).prepend('<h2>' + $(this).data('title') + '</h2>');
 						});
-					}
 
 					page.sections[0].content = $.html();
 				}
 			}
-
 			return page;
 		}
 	}
