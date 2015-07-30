@@ -93,20 +93,8 @@ module.exports = {
 							if($(this).data('show'))
 							{
 								$(this).find('.panel-collapse.collapse').addClass('in');
-								$(this).find('.panel-heading').children('h2').append('<a class="pull-right section atTitle" target="' + $(this).data('id') + '"></a>');
+								$(this).find('.panel-heading').children('h2').append('<a class="btn btn-default pull-right section atTitle" target="' + $(this).data('id') + '"><span class="fa fa-angle-up"/></a>');
 							}
-						});
-
-						$('.section').each(function(){ // add the toggle button
-							if($(this).attr('show'))
-								$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-up pull-left'/>");
-							else
-								$(this).html("<span class='fa fa-angle-down'/>");
-
-							if($(this).hasClass('atTitle'))
-								$(this).addClass('btn').addClass('btn-default');
-							else
-								$(this).addClass('btn').addClass('btn-primary');
 						});
 					}
 					else

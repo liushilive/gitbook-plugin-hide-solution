@@ -12,7 +12,8 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.6 Releases:
-	* **0.6.2:** Simplified syntax.
+	* **0.6.3:** Even more simplified code, updated README.
+	* **0.6.2:** Simplified code.
 	* **0.6.1:** Added more detailed error message.
 	* **0.6.0:** Added syntax checking while the book is being built. Common syntax error and invalid ID will be detected.
 
@@ -59,9 +60,10 @@ Insert markdown content here (you should start with h3 if you use heading).
 
 A section will take three arguments, listed as follows:
 
-* **title:** the title of the section, it will appear as the title of the bootstrap panel (with size of h2).
-* **id:** the id of the section, it is useful for button control (discussed in next section).
-* **show:** a boolean value denoting by default, whether or not the panel content will be visible.
+* **data-title:** the title of the section, it will appear as the title of the bootstrap panel (with size of h2).
+	* Please note that you cannot use the character ```"``` in the title, please use ```&quot;``` instead.
+* **data-id:** the id of the section, it is useful for button control (discussed in next section).
+* **data-show:** a boolean value denoting by default, whether or not the panel content will be visible.
 	* **true:** the panel content is visible to user by default, the panel title will be clickable.
 	* **false:** the panel content is hidden to user by default, the panel title is not clickable and can only be viewed by adding a custom button (discussed in next section).
 
@@ -90,3 +92,11 @@ If you are developing for other plugin, you can use the ```sectionToggle(id)``` 
 if(typeof sectionToggle === "function") //check if sectionx plugin is used
 	sectionToggle(target); //target is the id of the section to be toggled.
 ```
+
+### Known issue
+
+During book building, the following error message can be seen:
+```
+warn: hook 'page' used by plugin 'gitbook-plugin-sectionx' is deprecated, and will be removed in the coming versions
+```
+This message can be safely ignored.

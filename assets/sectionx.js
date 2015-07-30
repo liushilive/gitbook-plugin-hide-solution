@@ -14,36 +14,35 @@ function sectionToggle(tar){
 }
 
 var clickAction = function clickAction($source, tar){
+	var $target = $('#' + tar);
+	sectionToggle(tar);
 
-	$source.click(function(){
+	$target.on('show.bs.collapse', function(){
+		if($source.attr('hide'))
+			$source.html("<b>"+ $source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
+		else
+			$source.html("<span class='fa fa-angle-up'/>");
+	});
 
-		var $target = $('#' + tar);
-		sectionToggle(tar);
-
-		$target.on('show.bs.collapse', function(){
-			if($source.attr('hide'))
-				$source.html("<b>"+ $source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
-			else
-				$source.html("<span class='fa fa-angle-up'/>");
-		});
-
-		$target.on('hide.bs.collapse', function(){
-			if($source.attr('show'))
-				$source.html("<b>"+ $source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
-			else
-				$source.html("<span class='fa fa-angle-down'/>");
-		});
+	$target.on('hide.bs.collapse', function(){
+		if($source.attr('show'))
+			$source.html("<b>"+ $source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
+		else
+			$source.html("<span class='fa fa-angle-down'/>");
 	});
 };
 
-(function(){
+require(["gitbook"], function(gitbook) {
+	gitbook.events.bind("page.change", function(){
+		$('.section').each(function(){
+			if(!$(this).hasClass('atTitle'))
+				$(this).addClass('btn').addClass('btn-primary');
+			if($(this).attr('show'))
+				$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
 
-	require(["gitbook"], function(gitbook) {
-		gitbook.events.bind("page.change", function(){
-			$('.section').each(function(){
+			$(this).click(function(){
 				clickAction($(this), $(this).attr('target'));
 			});
 		});
 	});
-
-})();
+});
