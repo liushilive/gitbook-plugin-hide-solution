@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.6 Releases:
+	* **0.6.4:** Fixed not working section button.
 	* **0.6.3:** Even more simplified code, updated README.
 	* **0.6.2:** Simplified code.
 	* **0.6.1:** Added more detailed error message.

@@ -15,21 +15,24 @@ function sectionToggle(tar){
 
 var clickAction = function clickAction($source, tar){
 	var $target = $('#' + tar);
-	sectionToggle(tar);
 
-	$target.on('show.bs.collapse', function(){
-		if($source.attr('hide'))
-			$source.html("<b>"+ $source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
-		else
-			$source.html("<span class='fa fa-angle-up'/>");
-	});
+	$source.click(function(){
+		sectionToggle(tar);
 
-	$target.on('hide.bs.collapse', function(){
-		if($source.attr('show'))
-			$source.html("<b>"+ $source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
-		else
-			$source.html("<span class='fa fa-angle-down'/>");
-	});
+		$target.on('show.bs.collapse', function(){
+			if($source.attr('hide'))
+				$source.html("<b>"+ $source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
+			else
+				$source.html("<span class='fa fa-angle-up'/>");
+		});
+
+		$target.on('hide.bs.collapse', function(){
+			if($source.attr('show'))
+				$source.html("<b>"+ $source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
+			else
+				$source.html("<span class='fa fa-angle-down'/>");
+		});
+	})
 };
 
 require(["gitbook"], function(gitbook) {
@@ -40,9 +43,7 @@ require(["gitbook"], function(gitbook) {
 			if($(this).attr('show'))
 				$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
 
-			$(this).click(function(){
-				clickAction($(this), $(this).attr('target'));
-			});
+			clickAction($(this), $(this).attr('target'));
 		});
 	});
 });
