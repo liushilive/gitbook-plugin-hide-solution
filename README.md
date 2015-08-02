@@ -11,6 +11,9 @@ Please note that this plugin is experimental. Although it is working at the mome
 
 ## Changelog
 
+* 0.7 Releases:
+	* **0.7.0:** Fixed weird title button. ```data-show``` will be defaulted to true if not specified.
+
 * 0.6 Releases:
 	* **0.6.4:** Fixed not working section button.
 	* **0.6.3:** Even more simplified code, updated README.

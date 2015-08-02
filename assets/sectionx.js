@@ -1,49 +1,40 @@
 function sectionToggle(tar){
+	$('#'+tar).collapse('toggle');
 
-	var $target = $('#' + tar);
-	$target.collapse("toggle");
-
-	var $targetParent = $target.parents('sec');
-
-	if(!$targetParent.data('show'))
-	{
-		$targetParent.data('show', true);
-		$targetParent.find('.panel-heading').children('h2').append('<a class="pull-right section atTitle btn btn-default" target="' + $targetParent.data('id') + '"><span class="fa fa-angle-down" /></a>');
-		clickAction($targetParent.find('.section.atTitle'), $targetParent.find('.section.atTitle').attr('target'));
+	var $button = $('#'+tar).parents('sec').find('.section.atTitle');
+	if($button.hasClass('hidden')){
+		$button.removeClass('hidden').hide().show('slow');
+		clickAction($button, $button.attr('target'));
 	}
 }
 
 var clickAction = function clickAction($source, tar){
-	var $target = $('#' + tar);
-
 	$source.click(function(){
 		sectionToggle(tar);
+	});
 
-		$target.on('show.bs.collapse', function(){
-			if($source.attr('hide'))
-				$source.html("<b>"+ $source.attr('hide') +"</b><span class='fa fa-angle-up pull-left'/>");
-			else
-				$source.html("<span class='fa fa-angle-up'/>");
-		});
+	$('#'+tar).on('show.bs.collapse', function(){
+		$source.html($source.attr('hide')?
+			('<b>' + $source.attr('hide') + '</b><span class="fa fa-angle-up pull-left"/>'):
+			'<span class="fa fa-angle-up"/>');
+	});
 
-		$target.on('hide.bs.collapse', function(){
-			if($source.attr('show'))
-				$source.html("<b>"+ $source.attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
-			else
-				$source.html("<span class='fa fa-angle-down'/>");
-		});
-	})
+	$('#'+tar).on('hide.bs.collapse', function(){
+		$source.html($source.attr('show')?
+			('<b>' + $source.attr('show') + '</b><span class="fa fa-angle-down pull-left"/>'):'<span class="fa fa-angle-down"/>');
+	});
 };
 
 require(["gitbook"], function(gitbook) {
 	gitbook.events.bind("page.change", function(){
 		$('.section').each(function(){
-			if(!$(this).hasClass('atTitle'))
-				$(this).addClass('btn').addClass('btn-primary');
-			if($(this).attr('show'))
-				$(this).html("<b>"+ $(this).attr('show') +"</b><span class='fa fa-angle-down pull-left'/>");
-
 			clickAction($(this), $(this).attr('target'));
+			if(!$(this).hasClass('atTitle')){
+				$(this).addClass('btn btn-primary');
+				$(this).html($(this).attr('show')?
+					('<b>'+ $(this).attr('show') +'</b><span class="fa fa-angle-down pull-left"/>'):
+					'<span class="fa fa-angle-down"/>');
+			}
 		});
 	});
 });

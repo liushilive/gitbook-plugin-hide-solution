@@ -1,6 +1,5 @@
 .book.color-theme-2 > .book-body > .body-inner > .page-wrapper > .page-inner > section > sec > .panel {
 	background: #1A1A1A;
-
 	border-style: solid;
 	border-color: rgba(0,0,0,0.1);
 	border-width: 1px;
@@ -13,4 +12,8 @@
 
 .book.color-theme-2 > .book-body > .body-inner > .page-wrapper > .page-inner > section > sec > .panel > .panel-heading > h2 > a.section {
 	border-color: #373b4e !important;
+}
+
+.hidden {
+	display: none;
 }

@@ -30,12 +30,12 @@ module.exports = {
 
 					var header = item.match(/<!--\s*sec[\s\S]+?ces\s*-->/)[0],
 						body = item.replace(/<!--\s*sec[\s\S]+?ces\s*-->/, '').replace(/<!--\s*endsec\s*-->/, ''),
-						id = item.match(/data-id\s*=\s*"[\w\d]+?"\s/);
+						id = header.match(/data-id\s*=\s*"[\w\d]+?"\s/);
 
 					if(/<!--\s*sec/.test(body)) //contain nested sections
 						error.push([header, 'Nested sections are not supported by this plugin.']);
 
-					if(!item.match(/data-title\s*=\s*"[^"]+?"\s/)) //contain valid title
+					if(!header.match(/data-title\s*=\s*"[^"]+?"\s/)) //contain valid title
 						error.push([header, 'A valid title is missing.']);
 
 					if(id){
@@ -48,7 +48,7 @@ module.exports = {
 					else
 						error.push([header, 'A valid id is missing.']);
 
-					if(item.match(/data-show\s*=\s*.+?\s/))
+					if(header.match(/data-show\s*=\s*.+?\s/))
 						if(!item.match(/data-show\s*=\s*true\s/) && !item.match(/data-show\s*=\s*false\s/))
 							error.push([header, 'Attribute "data-show" is set to invalid value.']);
 
@@ -79,7 +79,8 @@ module.exports = {
 							var content = ''
 								+ '<div class="panel panel-default">'
 								+ '	<div class="panel-heading">'
-								+ '		<h2>' + title + '</h2>'
+								+ '		<h2><a class="pull-right section atTitle btn btn-default" target="' + $(this).data('id') + '"><span class="fa fa-angle-up" /></a>'
+								+ title + '</h2>'
 								+ '	</div>'
 								+ '	<div class="panel-collapse collapse" id="' + $(this).data('id') + '">'
 								+ ' 	<div class="panel-body">'
@@ -90,11 +91,10 @@ module.exports = {
 
 							$(this).html(content);
 
-							if($(this).data('show'))
-							{
+							if($(this).data('show') == false)
+								$(this).find('.atTitle').addClass('hidden');
+							else
 								$(this).find('.panel-collapse.collapse').addClass('in');
-								$(this).find('.panel-heading').children('h2').append('<a class="btn btn-default pull-right section atTitle" target="' + $(this).data('id') + '"><span class="fa fa-angle-up"/></a>');
-							}
 						});
 					}
 					else
