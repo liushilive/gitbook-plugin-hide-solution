@@ -2,10 +2,10 @@ function sectionToggle(tar){
 	var $target = $('#'+tar);
 	var $panel = $target.parents('.panel');
 
-	if($target.parents('sec').data('show') === false)
-		$panel.slideToggle('slow');
-
 	$target.collapse('toggle');
+
+	if($target.parents('sec').data('show') === false)
+		$panel.toggle('slow');
 }
 
 var clickAction = function clickAction($source, tar){

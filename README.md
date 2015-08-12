@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.7 Releases:
+	* **0.7.3:** Changed animation.
 	* **0.7.2:** Changed animation.
 	* **0.7.1:** Section with ```data-show=false``` is now hidden instead of collapsed by default.
 	* **0.7.0:** Fixed weird title button. ```data-show``` will be defaulted to true if not specified.
