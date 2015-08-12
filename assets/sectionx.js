@@ -3,7 +3,7 @@ function sectionToggle(tar){
 	var $panel = $target.parents('.panel');
 
 	if($target.parents('sec').data('show') === false)
-		$panel.toggle('slow');
+		$panel.slideToggle('slow');
 
 	$target.collapse('toggle');
 }
