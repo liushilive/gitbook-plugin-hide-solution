@@ -91,8 +91,8 @@ module.exports = {
 
 							$(this).html(content);
 
-							if($(this).data('show') == false)
-								$(this).find('.atTitle').addClass('hidden');
+							if($(this).data('show') === false)
+								$(this).find('.panel').addClass('hidden');
 							else
 								$(this).find('.panel-collapse.collapse').addClass('in');
 						});

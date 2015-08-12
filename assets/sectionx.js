@@ -1,11 +1,11 @@
 function sectionToggle(tar){
-	$('#'+tar).collapse('toggle');
+	var $target = $('#'+tar);
+	var $panel = $target.parents('.panel');
 
-	var $button = $('#'+tar).parents('sec').find('.section.atTitle');
-	if($button.hasClass('hidden')){
-		$button.removeClass('hidden').hide().show('slow');
-		clickAction($button, $button.attr('target'));
-	}
+	if($target.parents('sec').data('show') === false)
+		$panel.toggle('slow');
+
+	$target.collapse('toggle');
 }
 
 var clickAction = function clickAction($source, tar){
@@ -35,6 +35,11 @@ require(["gitbook"], function(gitbook) {
 					('<b>'+ $(this).attr('show') +'</b><span class="fa fa-angle-down pull-left"/>'):
 					'<span class="fa fa-angle-down"/>');
 			}
+		});
+
+		$('sec').each(function(){
+			if($(this).find('.panel').hasClass('hidden'))
+				$(this).find('.panel').removeClass('hidden').hide();
 		});
 	});
 });
