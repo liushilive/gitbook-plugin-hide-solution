@@ -98,9 +98,13 @@ module.exports = {
 						});
 					}
 					else
-						$('sec').each(function(i, elem){
-							var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-							$(this).prepend('<h2>' + $(this).data('title') + '</h2>');
+						$('sec').each(function(){
+							if($(this).data('nopdf'))
+								$(this).remove();
+							else {
+								var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+								$(this).prepend('<h2>' + $(this).data('title') + '</h2>');
+							}
 						});
 
 					page.sections[0].content = $.html();

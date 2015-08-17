@@ -1,16 +1,16 @@
-function sectionToggle(tar){
+function sectionToggle(tar, button){
 	var $target = $('#'+tar);
 	var $panel = $target.parents('.panel');
 
 	$target.collapse('toggle');
 
-	if($target.parents('sec').data('show') === false)
+	if(button)
 		$panel.toggle('slow');
 }
 
 var clickAction = function clickAction($source, tar){
 	$source.click(function(){
-		sectionToggle(tar);
+		sectionToggle(tar, !$(this).hasClass('atTitle'));
 	});
 
 	$('#'+tar).on('show.bs.collapse', function(){

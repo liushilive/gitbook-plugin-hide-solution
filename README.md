@@ -12,6 +12,7 @@ Please note that this plugin is experimental. Although it is working at the mome
 ## Changelog
 
 * 0.7 Releases:
+	* **0.7.4:** Section marked with ```data-nopdf=true``` will not be shown in .pdf or .epub exports. The title button of hidden sections will toggle the section instead of hiding it.
 	* **0.7.3:** Changed animation.
 	* **0.7.2:** Changed animation.
 	* **0.7.1:** Section with ```data-show=false``` is now hidden instead of collapsed by default.
@@ -73,6 +74,8 @@ A section will take three arguments, listed as follows:
 * **data-show:** a boolean value denoting by default, whether or not the panel content will be visible.
 	* **true:** the panel content is visible to user by default, the panel title will be clickable.
 	* **false:** the panel content is hidden to user by default, the panel title is not clickable and can only be viewed by adding a custom button (discussed in next section).
+* **data-nopdf:** a boolean value denoting whether or not the section will be hidden in pdf exports.
+	* **true**: the panel will not be shown in .pdf or .epub.
 
 ### Using a button to control section visibility
 
