@@ -1,9 +1,10 @@
 function sectionToggle(tar, button){
 	var $target = $('#'+tar);
-	$target.collapse('toggle');
 
 	if(button)
 		$target.parents('.panel').slideToggle('slow');
+	else
+		$target.collapse('toggle', 'slow');
 }
 
 var clickAction = function clickAction($source, tar){
@@ -39,7 +40,6 @@ require(["gitbook", "jquery"], function(gitbook, $) {
 		});
 
 		$('sec').each(function(){
-			$(this).find('.panel').collapse('show');
 			if($(this).find('.panel').hasClass('hidden'))
 				$(this).find('.panel').removeClass('hidden').hide();
 		});

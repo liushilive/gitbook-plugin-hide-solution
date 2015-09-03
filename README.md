@@ -7,9 +7,7 @@ You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-tes
 ## Change-log
 
 * 1.0 Releases:
-	* **1.0.0:**
-		* Bumped to 1.0.0 because it is now stable.
-		* Smoother.
+	* **1.0.1:* Bumped to 1.0.1 because it is now stable. UI is Smoother.
 
 * 0.7 Releases:
 	* **0.7.4:** Section marked with ```data-nopdf=true``` will not be shown in .pdf or .epub exports. The title button of hidden sections will toggle the section instead of hiding it.
