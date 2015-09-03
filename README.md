@@ -1,15 +1,15 @@
-gitbook-plugin-sectionx
-===
-
 This is GitBook plugin created for you to separate the page into sections, and add buttons to allow readers to control the visibility of each section.
 
 ## Example
 
 You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-test/content/testing_sectionx.html)
 
-Please note that this plugin is experimental. Although it is working at the moment, but the syntax or others are still subjected to change.
+## Change-log
 
-## Changelog
+* 1.0 Releases:
+	* **1.0.0:**
+		* Bumped to 1.0.0 because it is now stable.
+		* Smoother.
 
 * 0.7 Releases:
 	* **0.7.4:** Section marked with ```data-nopdf=true``` will not be shown in .pdf or .epub exports. The title button of hidden sections will toggle the section instead of hiding it.
