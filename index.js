@@ -83,7 +83,7 @@ module.exports = {
                                 title +
                                 '</h2>' +
                                 '	</div>' +
-                                '	<div class="panel-collapse collapse in" id="' + $(this).data('id') +
+                                '	<div class="panel-collapse collapse" id="' + $(this).data('id') +
                                 '"><div class="panel-body">' +
                                 html +
                                 '		</div>' +
@@ -94,6 +94,8 @@ module.exports = {
 
                             if ($(this).data('show') === false)
                                 $(this).find('.panel').addClass('hidden');
+                            else
+                                $(this).find('.panel-collapse').addClass('in');
                         });
                     } else
                         $('sec').each(function() {

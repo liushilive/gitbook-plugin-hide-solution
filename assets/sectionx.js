@@ -1,10 +1,10 @@
 function sectionToggle(tar, button){
 	var $target = $('#'+tar);
 
+	$target.collapse('toggle', 'slow');
+
 	if(button)
-		$target.parents('.panel').slideToggle('slow');
-	else
-		$target.collapse('toggle', 'slow');
+		$target.parents('.panel').toggle('fast');
 }
 
 var clickAction = function clickAction($source, tar){
