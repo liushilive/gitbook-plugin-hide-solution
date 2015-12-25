@@ -4,6 +4,9 @@ This is GitBook plugin created for you to separate the page into sections, and a
 
 You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-test/content/testing_sectionx.html)
 
+## Changelog
+
+**2.0.0:**: Fixed CSS problem, upgraded to latest bootstrap and simplified code. Please update to at least NodeJS 4.0 in order for this plugin to work. 
 
 ## How to use section?
 

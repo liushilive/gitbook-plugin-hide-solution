@@ -5,11 +5,11 @@ module.exports = {
     website: {
         assets: "./assets",
         js: [
-            "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js",
+            "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
             "sectionx.js"
         ],
         css: [
-            "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css",
+            "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
             "sectionx.css"
         ]
     },
@@ -26,7 +26,7 @@ module.exports = {
 
                 var error = [];
 
-                match.forEach(function(item, i) {
+                match.forEach((item, i) => {
 
                     var header = item.match(/<!--\s*sec[\s\S]+?ces\s*-->/)[0],
                         body = item.replace(/<!--\s*sec[\s\S]+?ces\s*-->/, '').replace(/<!--\s*endsec\s*-->/, ''),
@@ -51,14 +51,16 @@ module.exports = {
                         if (!item.match(/data-show\s*=\s*true\s/) && !item.match(/data-show\s*=\s*false\s/))
                             error.push([header, 'Attribute "data-show" is set to invalid value.']);
 
-                    content = content.replace(/<!--\s*sec\s/g, '<sec ').replace(/\sces\s*-->/g, '>').replace(/<!--\s*endsec\s*-->/g, '</sec>');
+                    content = content.replace(/<!--\s*sec\s/g, '<sec ')
+                        .replace(/\sces\s*-->/g, '>')
+                        .replace(/<!--\s*endsec\s*-->/g, '</sec>');
                 });
 
                 if (error.length > 0) {
-                    console.log('\n\033[93m****** [gitbook-plugin-sectionx](' + page.path + ') ******\033[0m\n');
+                    console.log(`[gitbook-plugin-sectionx](${page.path}) ******\n`);
 
-                    error.forEach(function(item) {
-                        console.log('\u001B[31m*** Error: ' + item[1] + ' Please fix the syntax for the following section:\033[0m');
+                    error.forEach(item => {
+                        console.log(`Error: ${item[1]} Please fix the syntax for the following section:`);
                         console.log(item[0] + '\n');
                     });
 
@@ -75,22 +77,21 @@ module.exports = {
                             var html = $(this).html();
                             var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-                            var content = '' +
-                                '<div class="panel panel-default">' +
-                                '	<div class="panel-heading">' +
-                                '		<h2><a class="pull-right section atTitle btn btn-default" target="' + $(this).data('id') +
-                                '"><span class="fa fa-angle-up" /></a>' +
-                                title +
-                                '</h2>' +
-                                '	</div>' +
-                                '	<div class="panel-collapse collapse" id="' + $(this).data('id') +
-                                '"><div class="panel-body">' +
-                                html +
-                                '		</div>' +
-                                '	</div>' +
-                                '</div>';
-
-                            $(this).html(content);
+                            $(this).html(`
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2>
+                                            ${$(this).data('title')}
+                                            <a class="pull-right section atTitle btn btn-default" target=${$(this).data('id')}>
+                                                <span class="fa fa-angle-up" />
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="panel-collapse" id="${$(this).data('id')}">
+                                        <div class="panel-body">${html}</div>
+                                    </div>
+                                </div>
+                            `);
 
                             if ($(this).data('show') === false)
                                 $(this).find('.panel').addClass('hidden');
@@ -103,7 +104,7 @@ module.exports = {
                                 $(this).remove();
                             else {
                                 var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                                $(this).prepend('<h2>' + $(this).data('title') + '</h2>');
+                                $(this).prepend(`<h2>${$(this).data('title')}</h2>`);
                             }
                         });
 
