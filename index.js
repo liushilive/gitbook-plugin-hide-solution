@@ -26,7 +26,7 @@ module.exports = {
 
                 var error = [];
 
-                match.forEach((item, i) => {
+                match.forEach(function(item, i){
 
                     var header = item.match(/<!--\s*sec[\s\S]+?ces\s*-->/)[0],
                         body = item.replace(/<!--\s*sec[\s\S]+?ces\s*-->/, '').replace(/<!--\s*endsec\s*-->/, ''),
@@ -57,10 +57,10 @@ module.exports = {
                 });
 
                 if (error.length > 0) {
-                    console.log(`[gitbook-plugin-sectionx](${page.path}) ******\n`);
+                    console.log('[gitbook-plugin-sectionx](' + page.path + ')n');
 
-                    error.forEach(item => {
-                        console.log(`Error: ${item[1]} Please fix the syntax for the following section:`);
+                    error.forEach(function(item) {
+                        console.log('Error: ' + item[1] + ' Please fix the syntax for the following section:');
                         console.log(item[0] + '\n');
                     });
 
@@ -77,21 +77,20 @@ module.exports = {
                             var html = $(this).html();
                             var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-                            $(this).html(`
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h2>
-                                            ${$(this).data('title')}
-                                            <a class="pull-right section atTitle btn btn-default" target=${$(this).data('id')}>
-                                                <span class="fa fa-angle-up" />
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="panel-collapse" id="${$(this).data('id')}">
-                                        <div class="panel-body">${html}</div>
-                                    </div>
-                                </div>
-                            `);
+                            $(this).html(
+                                '<div class="panel panel-default">' +
+                                    '<div class="panel-heading">' +
+                                        '<h2>' +
+                                        $(this).data('title') +
+                                        '<a class="pull-right section atTitle btn btn-default" target=' + $(this).data('id') + '>' +
+                                            '<span class="fa fa-angle-up" />' +
+                                        '</a>' +
+                                        '</h2>' +
+                                    '</div>' +
+                                    '<div class="panel-collapse" id="' + $(this).data('id') + '">' +
+                                        '<div class="panel-body">' + html + '</div>' +
+                                    '</div>' +
+                                '</div>');
 
                             if ($(this).data('show') === false)
                                 $(this).find('.panel').addClass('hidden');
@@ -104,7 +103,7 @@ module.exports = {
                                 $(this).remove();
                             else {
                                 var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                                $(this).prepend(`<h2>${$(this).data('title')}</h2>`);
+                                $(this).prepend('<h2>' + $(this).data('title') + '</h2>');
                             }
                         });
 
