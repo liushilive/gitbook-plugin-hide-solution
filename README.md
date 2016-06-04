@@ -2,11 +2,12 @@ This is GitBook plugin created for you to separate the page into sections, and a
 
 ## Example
 
-You can see it at work here: [Click here](http://ymcatar.gitbooks.io/gitbook-test/content/testing_sectionx.html)
+You can see it here: [Click here](http://ymcatar.gitbooks.io/gitbook-test/content/testing_sectionx.html)
 
 ## Changelog
 
-**2.0.1:**: Fixed CSS problem, upgraded to latest bootstrap and simplified code.
+**2.1.0:** Added `data-collapse` option.
+**2.0.1:** Fixed CSS problem, upgraded to latest bootstrap and simplified code.
 
 ## How to use section?
 
@@ -32,6 +33,9 @@ A section will take three arguments, listed as follows:
 	* **false:** the panel content is hidden to user by default, the panel title is not clickable and can only be viewed by adding a custom button (discussed in next section).
 * **data-nopdf:** a boolean value denoting whether or not the section will be hidden in pdf exports.
 	* **true**: the panel will not be shown in .pdf or .epub.
+* **data-collapse:** a boolean value denoting whether the section will be opened (but still visible) by default.
+	* **true:** the panel content is visible to user by default, but closed.
+	* **false:** the panel content is visible to user by default, but opened (default settings).
 
 ### Using a button to control section visibility
 

@@ -51,6 +51,10 @@ module.exports = {
                         if (!item.match(/data-show\s*=\s*true\s/) && !item.match(/data-show\s*=\s*false\s/))
                             error.push([header, 'Attribute "data-show" is set to invalid value.']);
 
+                    if (header.match(/data-collapse\s*=\s*.+?\s/))
+                      if (!item.match(/data-collapse\s*=\s*true\s/) && !item.match(/data-collapse\s*=\s*false\s/))
+                        error.push([header, 'Attribute "data-collapse" is set to invalid value.']);
+
                     content = content.replace(/<!--\s*sec\s/g, '<sec ')
                         .replace(/\sces\s*-->/g, '>')
                         .replace(/<!--\s*endsec\s*-->/g, '</sec>');
