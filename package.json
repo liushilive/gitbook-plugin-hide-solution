@@ -2,9 +2,9 @@
     "name": "gitbook-plugin-sectionx",
     "description": "A GitBook plugin for separating the page into sections.",
     "main": "index.js",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "engines": {
-        "gitbook": ">=2.x.x"
+        "gitbook": ">=3.x.x"
     },
     "keywords": ["section", "gitbook", "interactive", "panel"],
     "dependencies": {

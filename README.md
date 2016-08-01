@@ -6,6 +6,7 @@ You can see it here: [Click here](http://ymcatar.gitbooks.io/gitbook-test/conten
 
 ## Changelog
 
+**3.0.0:** Requires gitbook 3.0 or up, fixed plugin in gitbook 3.0.
 **2.1.0:** Added `data-collapse` option.
 **2.0.1:** Fixed CSS problem, upgraded to latest bootstrap and simplified code.
 
