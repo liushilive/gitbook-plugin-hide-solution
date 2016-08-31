@@ -21,6 +21,13 @@ module.exports = {
         match = content.match(/<!--\s*sec[\s\S]+?ces\s*-->[\s\S]+?<!--\s*endsec\s*-->/g),
         idList = [];
 
+      var availableTags = ["h1", "h2", "h3", "h4", "h5", "h6", "b"],
+          sectionxTag = "h2"
+
+      if (availableTags.indexOf(this.config.get("pluginsConfig").sectionx.tag) != -1 ) {
+        sectionxTag = this.config.get("pluginsConfig").sectionx.tag
+      }
+
       if (match) {
 
         var error = [];
@@ -83,12 +90,12 @@ module.exports = {
               $(this).html(
                 '<div class="panel panel-default">' +
                 '<div class="panel-heading">' +
-                '<h2>' +
+                '<' + sectionxTag + '>' +
                 $(this).data('title') +
                 '<a class="pull-right section atTitle btn btn-default" target=' + $(this).data('id') + '>' +
                 '<span class="fa fa-angle-up" />' +
                 '</a>' +
-                '</h2>' +
+                '</' + sectionxTag + '>' +
                 '</div>' +
                 '<div class="panel-collapse" id="' + $(this).data('id') + '">' +
                 '<div class="panel-body">' + html + '</div>' +
@@ -106,7 +113,7 @@ module.exports = {
                 $(this).remove();
               else {
                 var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                $(this).prepend('<h2>' + $(this).data('title') + '</h2>');
+                $(this).prepend('<' + sectionxTag + '>' + $(this).data('title') + '</' + sectionxTag + '>');
               }
             });
 

@@ -52,3 +52,17 @@ By adding inline HTML in the GitBook, the following code can add a button to all
 * **hide:** the text on the button when the target section is visible.
 
 Note that you can leave 'show' and 'hide' undefined, in this case, an up-arrow or down-arrow will be displayed instead. The button will not be outputed if exported to .pdf or other formats.
+
+### Using Custom Tag for section title
+
+- available HTML tag for section title `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `b`
+
+``` json
+{
+	"pluginsConfig": {
+	    "sectionx": {
+	      "tag": "b"
+	    }
+	  }
+}
+```
