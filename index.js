@@ -21,11 +21,10 @@ module.exports = {
         match = content.match(/<!--\s*sec[\s\S]+?ces\s*-->[\s\S]+?<!--\s*endsec\s*-->/g),
         idList = [];
 
-      var availableTags = ["h1", "h2", "h3", "h4", "h5", "h6", "b"],
-          sectionxTag = "h2"
+      var customTag = this.config.get("pluginsConfig").sectionx.tag || 'h2';
 
-      if (availableTags.indexOf(this.config.get("pluginsConfig").sectionx.tag) != -1 ) {
-        sectionxTag = this.config.get("pluginsConfig").sectionx.tag
+      if (!customTag.match(/^(h[1-6]|b)$/)) {
+        customTag = 'h2';
       }
 
       if (match) {
@@ -90,12 +89,12 @@ module.exports = {
               $(this).html(
                 '<div class="panel panel-default">' +
                 '<div class="panel-heading">' +
-                '<' + sectionxTag + '>' +
+                '<' + customTag + '>' +
                 $(this).data('title') +
                 '<a class="pull-right section atTitle btn btn-default" target=' + $(this).data('id') + '>' +
                 '<span class="fa fa-angle-up" />' +
                 '</a>' +
-                '</' + sectionxTag + '>' +
+                '</' + customTag + '>' +
                 '</div>' +
                 '<div class="panel-collapse" id="' + $(this).data('id') + '">' +
                 '<div class="panel-body">' + html + '</div>' +
@@ -113,7 +112,7 @@ module.exports = {
                 $(this).remove();
               else {
                 var title = $(this).data('title').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                $(this).prepend('<' + sectionxTag + '>' + $(this).data('title') + '</' + sectionxTag + '>');
+                $(this).prepend('<' + customTag + '>' + $(this).data('title') + '</' + customTag + '>');
               }
             });
 
