@@ -32,6 +32,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
         $(this).find('.panel').removeClass('hidden').hide();
       if ($(this).data('collapse') === true) {
         $('#' + $(this).data('id')).collapse('hide');
+         $(this).find('.section.atTitle.btn').html('<span class="fa fa-angle-down"/>');
       }
       //.collapse('toggle');
     });
